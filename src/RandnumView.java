@@ -47,6 +47,7 @@ public class RandnumView extends JFrame {
                 if (randnumModel.getGameState() != RandnumModel.currentState.WaitingForBet)
                     try {
                         int guess = Integer.parseInt(betField.getText());
+                        betField.setText("");
                         int result = randnumModel.makeGuess(guess);
                         if(result == 1) {
                             updateGameView();
@@ -75,6 +76,7 @@ public class RandnumView extends JFrame {
                         } catch (NumberFormatException ex) {
                         feedbackLabel.setText("Please enter a valid number.");
                     }
+                    betField.setText("");
                 }
 
             }

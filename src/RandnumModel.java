@@ -94,6 +94,7 @@ public class RandnumModel {
 
     public void exit() {
         MainMenuModel.money = money; // Update main menu's money value
+        randnumView.dispose();
         menuModel.setVisible();
     }
 }
