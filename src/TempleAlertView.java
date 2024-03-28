@@ -8,13 +8,18 @@ public class TempleAlertView extends JFrame {
 
     private JLabel titleLabel;
     private JLabel postLabel;
-    private JTextField betField;
-    private JTextField guessField;
+    private JLabel postTitle;
+    private JLabel postAuthor;
+    private JTextArea postBody;
+    private JLabel postTime;
+    private JLabel spacerField;
     private JButton jButtonExit;
 
-    public TempleAlertView(TempleAlertModel model) {
+    public TempleAlertView(TempleAlertModel model) throws Exception {
         super("Temple's latest posts");
         this.templeAlertModel = model;
+        model.startGame();
+        model.fetchLatestTemplePost();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300);
@@ -28,10 +33,34 @@ public class TempleAlertView extends JFrame {
         postLabel.setAlignmentX(Component.LEFT_ALIGNMENT); // Align to the left
         add(postLabel);
 
-        betField = new JTextField(10);
-        add(betField);
+        spacerField = new JLabel("\n");
+        add(spacerField);
 
-        titleLabel.setAlignmentX(Component.LEFT_ALIGNMENT); // Align to the left
+        String title = model.getTitle();
+        postTitle = new JLabel("Title: " + title);
+        postTitle.setAlignmentX(Component.LEFT_ALIGNMENT); // Align to the left
+        add(postTitle);
+        System.out.println(title);
+
+        String author = model.getAuthor();
+        postAuthor = new JLabel("Author: " + author);
+        postAuthor.setAlignmentX(Component.LEFT_ALIGNMENT); // Align to the left
+        add(postAuthor);
+        System.out.println(author);
+
+        String time = model.getTime();
+        postTime = new JLabel("Time Posted: " + time);
+        postTime.setAlignmentX(Component.LEFT_ALIGNMENT); // Align to the left
+        add(postTime);
+        System.out.println(time);
+
+        String post = model.getBody();
+        postBody = new JTextArea(post);
+        postBody.setAlignmentX(Component.LEFT_ALIGNMENT); // Align to the left
+        postBody.setLineWrap(true);
+        postBody.setSize(300,1);
+        add(postBody);
+        System.out.println(post);
 
         jButtonExit = new JButton("Exit");
         jButtonExit.addActionListener(new ActionListener() {

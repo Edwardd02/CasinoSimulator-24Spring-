@@ -275,7 +275,11 @@ public class MainMenuView extends JFrame {
                 super.mouseClicked(e);
                 gamemode = gamemodeSelect.getItemAt(gamemodeSelect.getSelectedIndex());
                 setVisible(false);
-                menuModel.startTempleAlertModel();
+                try {
+                    menuModel.startTempleAlertModel();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
