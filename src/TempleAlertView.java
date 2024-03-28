@@ -13,7 +13,7 @@ public class TempleAlertView extends JFrame {
     private JButton jButtonExit;
 
     public TempleAlertView(TempleAlertModel model) {
-        super("Guess the Number Game");
+        super("Temple's latest posts");
         this.templeAlertModel = model;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
